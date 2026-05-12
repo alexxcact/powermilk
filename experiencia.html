@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conoce la experiencia Power Milk · Quesos artesanales de pasta hilada del altiplano nariñense. Tradición, calidad y sabor campesino desde 2010." />
+  <title>Power Milk · Experiencia Láctea Nariñense</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #F4F9EB;
+      --bg-card: #FFFFFF;
+      --bg-dark: #1A1F12;
+      --text-primary: #1A1F12;
+      --text-secondary: #3A4832;
+      --text-muted: #6B7A5A;
+      --green: #9FD41C;
+      --green-dark: #7BB512;
+      --green-deep: #2F6B0E;
+      --blue: #36B5E5;
+      --gold: #FFD93D;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --container: 1280px;
+      --r-sm: 12px;
+      --r-md: 20px;
+      --r-lg: 32px;
+      --shadow: 0 8px 32px rgba(30,50,14,0.10);
+      --shadow-lg: 0 20px 56px rgba(30,50,14,0.18);
+      --transition: 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg-page);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    /* PROGRESS */
+    #progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--green),var(--blue));z-index:9999;transition:width .1s linear}
+
+    /* NAV */
+    .nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:20px 0;transition:var(--transition)}
+    .nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:14px 0;box-shadow:0 2px 20px rgba(0,0,0,0.08)}
+    .nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo img{height:46px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.25));transition:transform .3s}
+    .nav-logo:hover img{transform:scale(1.05) rotate(-2deg)}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{font-family:var(--font-display);font-weight:600;font-size:15px;position:relative;transition:color .2s}
+    .nav:not(.scrolled) .nav-links a{color:rgba(255,255,255,0.92);text-shadow:0 1px 6px rgba(0,0,0,0.4)}
+    .nav.scrolled .nav-links a{color:var(--text-primary)}
+    .nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--green);transition:width .3s}
+    .nav-links a:not(.nav-cta):hover::after{width:100%}
+    .nav-cta{background:var(--green);color:var(--text-primary)!important;padding:10px 22px;border-radius:100px;font-weight:700;transition:all .3s;text-shadow:none!important}
+    .nav-cta:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(159,212,28,0.4)}
+    .nav-burger{display:none;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+    .nav-burger span{width:22px;height:2px;border-radius:2px;transition:.3s;background:white}
+    .nav.scrolled .nav-burger span{background:var(--text-primary)}
+    .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0}
+    .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-mobile{display:none;flex-direction:column;background:white;padding:20px 24px;gap:4px;border-top:1px solid #E5E5DD}
+    .nav-mobile.open{display:flex}
+    .nav-mobile a{font-family:var(--font-display);font-weight:600;font-size:16px;padding:12px 16px;border-radius:10px;transition:background .2s}
+    .nav-mobile a:hover{background:rgba(159,212,28,0.1)}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;font-family:var(--font-display);font-weight:700;font-size:15px;transition:all .3s cubic-bezier(0.22,1,0.36,1);cursor:pointer;white-space:nowrap}
+    .btn-green{background:var(--green);color:var(--text-primary);box-shadow:0 10px 30px rgba(159,212,28,0.35)}
+    .btn-green:hover{background:var(--green-dark);transform:translateY(-3px);box-shadow:0 16px 40px rgba(159,212,28,0.45)}
+    .btn-glass{background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(10px)}
+    .btn-glass:hover{background:rgba(255,255,255,0.25);transform:translateY(-3px)}
+    .btn-whats{background:#25D366;color:white;box-shadow:0 10px 30px rgba(37,211,102,0.4)}
+    .btn-whats:hover{background:#1FB855;transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,211,102,0.5)}
+    .btn-outline{background:transparent;color:var(--green-dark);border:2px solid var(--green)}
+    .btn-outline:hover{background:var(--green);color:var(--text-primary);transform:translateY(-2px)}
+
+    /* REVEALS */
+    .reveal-up,.reveal-left,.reveal-right,.reveal-scale{opacity:0;transition:opacity .65s cubic-bezier(0.22,1,0.36,1),transform .65s cubic-bezier(0.22,1,0.36,1)}
+    .reveal-up{transform:translateY(40px)}
+    .reveal-left{transform:translateX(-40px)}
+    .reveal-right{transform:translateX(40px)}
+    .reveal-scale{transform:scale(0.92)}
+    .revealed{opacity:1!important;transform:none!important}
+    .stagger-1{transition-delay:.1s}.stagger-2{transition-delay:.2s}.stagger-3{transition-delay:.3s}.stagger-4{transition-delay:.4s}
+
+    /* SECTION HEADS */
+    .section-head{text-align:center;max-width:700px;margin:0 auto 64px}
+    .eyebrow{display:inline-block;font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--green-dark);background:rgba(159,212,28,0.12);padding:8px 18px;border-radius:100px;margin-bottom:20px}
+    .heading-serif{font-family:var(--font-serif);font-weight:600;font-size:clamp(32px,5vw,56px);line-height:1.1;color:var(--text-primary);margin-bottom:16px}
+    .heading-serif em{font-style:italic;color:var(--green-deep)}
+    .section-sub{font-size:17px;color:var(--text-muted);line-height:1.7}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;background:radial-gradient(ellipse at top right,rgba(159,212,28,0.25),transparent 55%),radial-gradient(ellipse at bottom left,rgba(47,107,14,0.55),transparent 55%),linear-gradient(155deg,#1A1F12 0%,#2F6B0E 55%,#3A8F10 100%);display:flex;align-items:center;overflow:hidden;padding:140px 0 110px}
+    .hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .particle{position:absolute;background:rgba(255,255,255,0.45);border-radius:50%;animation:particleRise linear infinite}
+    @keyframes particleRise{0%{transform:translateY(0) scale(1);opacity:.6}100%{transform:translateY(-110vh) scale(.4);opacity:0}}
+    .hero-inner{position:relative;z-index:2;max-width:var(--container);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);padding:10px 20px;border-radius:100px;font-family:var(--font-display);font-weight:600;font-size:13px;color:rgba(255,255,255,0.9);margin-bottom:28px}
+    .hero-eyebrow .dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+    .hero-title{font-family:var(--font-serif);font-weight:600;font-size:clamp(52px,7.5vw,104px);line-height:0.95;color:white;margin-bottom:28px}
+    .hero-title .accent{font-style:italic;color:var(--green);display:block}
+    .hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.8);max-width:520px;margin-bottom:40px}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+    .hero-stats{display:flex;gap:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15)}
+    .hero-stat-num{font-family:var(--font-serif);font-size:42px;font-weight:600;color:var(--green);line-height:1}
+    .hero-stat-lbl{font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px;font-weight:500}
+    .hero-visual{display:flex;justify-content:center;align-items:center}
+    .hero-img-wrap{position:relative;width:100%;max-width:420px}
+    .hero-glow{position:absolute;inset:-10%;background:radial-gradient(circle,rgba(159,212,28,0.3) 0%,transparent 65%);filter:blur(40px)}
+    .hero-mascota{position:relative;z-index:2;width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.4));animation:cowFloat 4s ease-in-out infinite}
+    @keyframes cowFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+    .hero-badge{position:absolute;z-index:3;background:white;padding:12px 18px;border-radius:100px;display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--text-primary);box-shadow:0 12px 30px rgba(0,0,0,0.2);animation:badgeFloat 5s ease-in-out infinite}
+    @keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .badge-a{top:5%;right:-5%;animation-delay:0s}
+    .badge-b{bottom:25%;left:-10%;animation-delay:-2s}
+    .hero-wave{position:absolute;bottom:-1px;left:0;width:100%;z-index:3}
+
+    /* VALUE PROPS */
+    .value-props{padding:120px 0;background:var(--bg-page)}
+    .props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1040px;margin:0 auto}
+    .prop-card{background:white;border:1px solid rgba(159,212,28,0.15);border-radius:var(--r-lg);padding:40px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;transition:all .4s;cursor:default;position:relative;overflow:hidden}
+    .prop-card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(159,212,28,0.07) 50%,transparent 100%);transform:translateX(-100%);transition:transform .6s}
+    .prop-card:hover::before{transform:translateX(100%)}
+    .prop-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--green)}
+    .prop-icon{width:80px;height:80px;background:rgba(159,212,28,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;transition:transform .3s}
+    .prop-card:hover .prop-icon{transform:scale(1.1)}
+    .prop-card h3{font-family:var(--font-serif);font-size:24px;font-weight:600;color:var(--text-primary)}
+    .prop-card p{font-size:15px;color:var(--text-muted);line-height:1.65}
+
+    /* PRODUCTS */
+    .products{padding:0 0 120px;background:var(--bg-page)}
+    .products-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:24px}
+    .prod-card{background:white;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);transition:all .5s cubic-bezier(0.22,1,0.36,1);display:flex;flex-direction:column}
+    .prod-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+    .prod-card.featured{grid-row:span 2}
+    .prod-media{position:relative;overflow:hidden}
+    .prod-card.featured .prod-media{flex:1;min-height:300px}
+    .prod-card:not(.featured) .prod-media{height:200px}
+    .prod-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(0.22,1,0.36,1)}
+    .prod-card:hover .prod-media img{transform:scale(1.06)}
+    .prod-tag{position:absolute;top:14px;left:14px;font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.5px;padding:5px 12px;border-radius:100px;z-index:2}
+    .prod-body{padding:24px}
+    .prod-card.featured .prod-body{padding:32px}
+    .prod-cat{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-dark);margin-bottom:8px;display:block}
+    .prod-body h3{font-family:var(--font-serif);font-size:26px;font-weight:600;color:var(--text-primary);margin-bottom:10px;line-height:1.15}
+    .prod-card.featured .prod-body h3{font-size:34px}
+    .prod-body p{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:16px}
+    .prod-sizes{display:flex;flex-wrap:wrap;gap:6px}
+    .prod-sizes span{background:rgba(159,212,28,0.1);color:var(--text-secondary);padding:5px 12px;border-radius:100px;font-family:var(--font-display);font-weight:600;font-size:12px}
+
+    /* PROCESS */
+    .process{padding:120px 0;background:var(--bg-dark);color:white;position:relative;overflow:hidden}
+    .process::after{content:'';display:none}
+    .process .eyebrow{color:var(--green);background:rgba(159,212,28,0.15)}
+    .process .heading-serif{color:white}
+    .process .heading-serif em{color:var(--green)}
+    .process .section-sub{color:rgba(255,255,255,0.6)}
+    .timeline{position:relative;max-width:900px;margin:0 auto}
+    .timeline::before{content:'';position:absolute;top:28px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% - 56px);background:linear-gradient(180deg,var(--green),transparent)}
+    .timeline-item{display:grid;grid-template-columns:1fr 56px 1fr;gap:32px;align-items:start;margin-bottom:72px}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-item:nth-child(odd) .t-content{grid-column:1;text-align:right}
+    .timeline-item:nth-child(odd) .t-dot{grid-column:2}
+    .timeline-item:nth-child(odd) .t-empty{grid-column:3}
+    .timeline-item:nth-child(even) .t-empty{grid-column:1}
+    .timeline-item:nth-child(even) .t-dot{grid-column:2}
+    .timeline-item:nth-child(even) .t-content{grid-column:3;text-align:left}
+    .t-dot{width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--bg-dark);flex-shrink:0;box-shadow:0 0 0 8px rgba(159,212,28,0.15),0 0 0 16px rgba(159,212,28,0.06);z-index:1;position:relative}
+    .t-time{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+    .t-content h3{font-family:var(--font-serif);font-size:26px;font-weight:600;color:white;margin-bottom:10px;line-height:1.2}
+    .t-content p{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.65}
+
+    /* GALLERY */
+    .gallery{padding:120px 0;background:white}
+    .masonry{columns:4;column-gap:16px}
+    .masonry-item{break-inside:avoid;margin-bottom:16px;border-radius:var(--r-md);overflow:hidden;position:relative;cursor:pointer}
+    .masonry-item img{width:100%;display:block;transition:transform .5s cubic-bezier(0.22,1,0.36,1)}
+    .masonry-item:hover img{transform:scale(1.05)}
+    .masonry-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,31,18,0.75),transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:20px}
+    .masonry-item:hover .masonry-overlay{opacity:1}
+    .masonry-label{font-family:var(--font-serif);font-size:18px;font-weight:600;color:white;font-style:italic}
+
+    /* CONTACT */
+    .contact{padding:120px 0;background:white}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:32px;align-items:stretch}
+    .contact-info{display:flex;flex-direction:column;gap:20px}
+    .contact-card{background:var(--bg-page);border-radius:var(--r-md);padding:28px;border:1px solid rgba(159,212,28,0.15);position:relative;overflow:hidden;transition:all .3s}
+    .contact-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),var(--blue))}
+    .contact-card:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+    .contact-icon{font-size:30px;margin-bottom:12px}
+    .contact-card h4{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-primary);margin-bottom:6px}
+    .contact-card p,.contact-card a{font-size:15px;color:var(--text-muted);line-height:1.6}
+    .contact-card a:hover{color:var(--green-dark)}
+    .map-wrap{border-radius:var(--r-lg);overflow:hidden;min-height:460px;box-shadow:var(--shadow-lg)}
+    .map-wrap iframe{display:block;width:100%;height:100%;min-height:460px}
+
+    /* FOOTER */
+    .footer{background:var(--bg-dark);color:white;padding:80px 0 30px}
+    .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:30px}
+    .footer-logo{height:52px;margin-bottom:20px;filter:brightness(1.1)}
+    .footer-brand p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:300px;margin-bottom:20px}
+    .footer-badges{display:flex;gap:10px;flex-wrap:wrap}
+    .badge-pill{background:rgba(159,212,28,0.12);color:var(--green);font-family:var(--font-display);font-weight:600;font-size:12px;padding:6px 14px;border-radius:100px}
+    .footer-col h5{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:20px}
+    .footer-col a,.footer-col span{display:block;font-size:14px;color:rgba(255,255,255,0.6);padding:5px 0;transition:color .2s}
+    .footer-col a:hover{color:var(--green)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,0.4)}
+    .footer-sustain{display:flex;gap:20px}
+
+    /* FLOAT WHATSAPP */
+    .float-whats{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,0.5);z-index:50;transition:all .3s;animation:pulseRing 2.5s infinite}
+    .float-whats:hover{transform:scale(1.1) rotate(-8deg)}
+    @keyframes pulseRing{0%{box-shadow:0 8px 30px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0.6)}70%{box-shadow:0 8px 30px rgba(37,211,102,0.5),0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 8px 30px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0)}}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero-inner{grid-template-columns:1fr;gap:40px}
+      .hero-visual{max-width:360px;margin:0 auto}
+      .props-grid{grid-template-columns:repeat(2,1fr);max-width:700px}
+      .products-grid{grid-template-columns:1fr 1fr}
+      .prod-card.featured{grid-column:span 2;grid-row:span 1}
+      .timeline::before{display:none}
+      .timeline-item{grid-template-columns:auto 1fr;gap:20px}
+      .timeline-item:nth-child(odd) .t-content,.timeline-item:nth-child(even) .t-content{grid-column:2;text-align:left}
+      .timeline-item:nth-child(odd) .t-dot,.timeline-item:nth-child(even) .t-dot{grid-column:1}
+      .t-empty{display:none}
+      .masonry{columns:3}
+      .contact-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .nav-burger{display:flex}
+      .value-props,.products,.process,.gallery,.contact{padding:80px 0}
+      .products{padding-top:0}
+      .hero{padding:120px 0 80px}
+      .props-grid{grid-template-columns:1fr;max-width:400px}
+      .products-grid{grid-template-columns:1fr}
+      .prod-card.featured{grid-column:span 1}
+      .masonry{columns:2}
+      .footer-grid{grid-template-columns:1fr;gap:32px}
+      .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+      .footer-sustain{flex-wrap:wrap;justify-content:center}
+      .hero-btns{flex-direction:column}
+      .btn{width:100%;justify-content:center}
+      .hero-stats{gap:24px}
+    }
+    @media(max-width:480px){
+      .masonry{columns:1}
+      .hero-title{font-size:50px}
+      .hero-stats{flex-direction:column;gap:16px}
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Power Milk" />
+    </a>
+    <nav class="nav-links" aria-label="Navegación">
+      <a href="index.html">Inicio</a>
+      <a href="#propuesta">¿Por qué nosotros?</a>
+      <a href="#productos">Productos</a>
+      <a href="#proceso">El Proceso</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto" class="nav-cta">Contáctanos</a>
+    </nav>
+    <button class="nav-burger" aria-label="Abrir menú" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Inicio</a>
+    <a href="#propuesta">¿Por qué nosotros?</a>
+    <a href="#productos">Productos</a>
+    <a href="#proceso">El Proceso</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contáctanos</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Tradición láctea desde 2010 · Cumbal, Nariño
+      </div>
+      <h1 class="hero-title">
+        Del campo
+        <span class="accent">a tu mesa</span>
+      </h1>
+      <p class="hero-sub">
+        Quesos de pasta hilada artesanales elaborados con la leche fresca del altiplano nariñense. Producidos por campesinos que ponen el corazón en cada pieza.
+      </p>
+      <div class="hero-btns">
+        <a href="#productos" class="btn btn-green">
+          Ver catálogo
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://wa.me/573207639891" target="_blank" rel="noopener" class="btn btn-glass">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.7-.3-.5.3-.5.9-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7 2 .8 2.8.9 3.8.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.2-1.4c1.4.7 3 1.1 4.8 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2"/></svg>
+          Pedir por WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">15+</div>
+          <div class="hero-stat-lbl">Años de tradición</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8</div>
+          <div class="hero-stat-lbl">Productos lácteos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-lbl">Leche campesina</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-glow"></div>
+        <img src="mascota.png" alt="Mascota Power Milk" class="hero-mascota" />
+        <div class="hero-badge badge-a">Pasta hilada</div>
+        <div class="hero-badge badge-b">Nariño</div>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,30 C360,80 720,0 1080,40 C1260,60 1380,20 1440,45 L1440,90 L0,90 Z" fill="#F4F9EB"/>
+  </svg>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="value-props" id="propuesta">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">¿Por qué elegirnos?</span>
+      <h2 class="heading-serif">La diferencia está en el <em>origen</em></h2>
+      <p class="section-sub">Cada queso Power Milk lleva el esfuerzo de nuestros campesinos y la riqueza única del altiplano nariñense.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-card reveal-scale stagger-1">
+        <div class="prop-icon"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--green-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 12c0-4-3-7-7-7 0 4 3 7 7 7z"/></svg></div>
+        <h3>Materia Prima Local</h3>
+        <p>Trabajamos directamente con pequeños productores de Cumbal y Guachucal, garantizando leche fresca a precios justos para el campesino.</p>
+      </div>
+      <div class="prop-card reveal-scale stagger-2">
+        <div class="prop-icon"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--green-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 20 9 8 13 14 16 10 21 20 3 20"/></svg></div>
+        <h3>Altiplano Nariñense</h3>
+        <p>Nuestras vacas pastan a más de 3.000 metros de altura, produciendo una leche con propiedades únicas de sabor y contenido graso.</p>
+      </div>
+      <div class="prop-card reveal-scale stagger-3">
+        <div class="prop-icon"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--green-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Calidad Garantizada</h3>
+        <p>Procesos controlados e inocuidad en cada etapa de producción. Del campo a tu mesa con la máxima frescura y consistencia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="productos">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">Nuestro catálogo</span>
+      <h2 class="heading-serif">Quesos que <em>cuentan una historia</em></h2>
+      <p class="section-sub">De la leche fresca del altiplano a tu mesa. Quesos frescos, derivados lácteos y postres artesanales nariñenses.</p>
+    </div>
+    <div class="products-grid">
+      <article class="prod-card featured reveal-left">
+        <div class="prod-media">
+          <img src="producto-doble-crema.jpg" alt="Queso Doble Crema Power Milk" loading="lazy" />
+          <span class="prod-tag" style="background:var(--gold);color:var(--text-primary)">★ Estrella</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">Queso de pasta hilada</span>
+          <h3>Queso Doble Crema</h3>
+          <p>Fresco, semiduro, semigraso y semidescremado. Preferido por su versatilidad y su gratinado excepcional para cualquier preparación culinaria.</p>
+          <div class="prod-sizes">
+            <span>2.400 g</span><span>900 g</span><span>450 g</span><span>220 g</span>
+          </div>
+        </div>
+      </article>
+      <article class="prod-card reveal-up stagger-2">
+        <div class="prod-media">
+          <img src="producto-mozzarella.jpg" alt="Queso Mozzarella Power Milk" loading="lazy" />
+          <span class="prod-tag" style="background:var(--blue);color:white">Para pizza</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">Pasta hilada</span>
+          <h3>Mozzarella</h3>
+          <p>Menor contenido graso, excelente gratinado y fundido al calor.</p>
+          <div class="prod-sizes"><span>2.400 g</span><span>450 g</span></div>
+        </div>
+      </article>
+      <article class="prod-card reveal-up stagger-3">
+        <div class="prod-media">
+          <img src="producto-tajado.jpg" alt="Doble Crema Tajado Power Milk" loading="lazy" />
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">Presentación en láminas</span>
+          <h3>Doble Crema Tajado</h3>
+          <p>Presentación en láminas para uso versátil en cocina y mesa.</p>
+          <div class="prod-sizes"><span>450 g</span><span>220 g</span></div>
+        </div>
+      </article>
+      <article class="prod-card reveal-up stagger-2">
+        <div class="prod-media">
+          <img src="producto-requeson.jpg" alt="Requesón Power Milk" loading="lazy" />
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">Derivado del suero</span>
+          <h3>Requesón</h3>
+          <p>Textura granulosa, sabor suave. Obtenido del suero lácteo.</p>
+          <div class="prod-sizes"><span>500 g</span><span>6 kg aprox.</span></div>
+        </div>
+      </article>
+      <article class="prod-card reveal-up stagger-3">
+        <div class="prod-media">
+          <img src="producto-cuajada.jpg" alt="Cuajada Power Milk" loading="lazy" />
+          <span class="prod-tag" style="background:var(--green-dark);color:white">Nuevo</span>
+        </div>
+        <div class="prod-body">
+          <span class="prod-cat">Queso fresco</span>
+          <h3>Cuajada</h3>
+          <p>Ideal con miel o melado. Tradición campesina nariñense.</p>
+          <div class="prod-sizes"><span>450 g</span></div>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="index.html#productos" class="btn btn-outline">Ver todos los productos</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS TIMELINE -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">El Proceso Artesanal</span>
+      <h2 class="heading-serif">De la leche al queso: <em>con pasión en cada paso</em></h2>
+      <p class="section-sub">Conoce el proceso detrás de cada queso Power Milk, desde la recolección en los tambos nariñenses hasta tu mesa.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-content reveal-right">
+          <div class="t-time">Madrugada · 4:00 AM</div>
+          <h3>Recolección de Leche Fresca</h3>
+          <p>Nuestros productores recolectan la leche antes del amanecer en los tambos del altiplano, donde las vacas pastan a más de 3.000 metros de altura.</p>
+        </div>
+        <div class="t-dot">01</div>
+        <div class="t-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-empty"></div>
+        <div class="t-dot">02</div>
+        <div class="t-content reveal-left">
+          <div class="t-time">Mañana · 7:00 AM</div>
+          <h3>Recepción y Control de Calidad</h3>
+          <p>La leche es recibida, analizada y pasteurizada en nuestra planta. Verificamos temperatura, acidez y composición para garantizar los más altos estándares de inocuidad.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-content reveal-right">
+          <div class="t-time">Mediodía · 10:00 AM</div>
+          <h3>Hilado y Moldeo Artesanal</h3>
+          <p>El proceso de pasta hilada — único de nuestros quesos — se realiza a mano, estirando y amasando la cuajada caliente hasta lograr la textura y elasticidad perfectas.</p>
+        </div>
+        <div class="t-dot">03</div>
+        <div class="t-empty"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-empty"></div>
+        <div class="t-dot">04</div>
+        <div class="t-content reveal-left">
+          <div class="t-time">Tarde · 2:00 PM</div>
+          <h3>Empaque y Distribución</h3>
+          <p>Los quesos son empacados al vacío y distribuidos frescos a puntos de venta en Pasto, Nariño y todo el país. Del campo a tu mesa en horas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">Nuestra Galería</span>
+      <h2 class="heading-serif">El sabor <em>que se ve</em></h2>
+      <p class="section-sub">Una muestra de la calidad y variedad de nuestros productos lácteos artesanales del altiplano nariñense.</p>
+    </div>
+    <div class="masonry reveal-up">
+      <div class="masonry-item">
+        <img src="producto-doble-crema.jpg" alt="Queso Doble Crema" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Doble Crema</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-mozzarella.jpg" alt="Mozzarella" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Mozzarella</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="mascota.png" alt="Power Milk" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Power Milk</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-tajado.jpg" alt="Doble Crema Tajado" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Doble Crema Tajado</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-requeson.jpg" alt="Requesón" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Requesón</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-crema.jpg" alt="Crema de Leche" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Crema de Leche</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-campesino.jpg" alt="Queso Campesino" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Queso Campesino</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-cuajada.jpg" alt="Cuajada" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Cuajada</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="producto-dulce.jpg" alt="Dulce de Leche" loading="lazy" />
+        <div class="masonry-overlay"><span class="masonry-label">Dulce de Leche</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="eyebrow">Visítanos</span>
+      <h2 class="heading-serif">Encuéntranos en <em>Pasto, Nariño</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-card reveal-left stagger-1">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--green-dark)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h4>Punto de venta</h4>
+          <p>Calle 10 N.º 28A-12, Primer piso<br/>Edificio "SpacioLA10"<br/>Sector La Aurora, Pasto, Nariño</p>
+        </div>
+        <div class="contact-card reveal-left stagger-2">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--green-dark)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.47 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.84A16 16 0 0 0 12 13.15l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h4>Pedidos por WhatsApp</h4>
+          <p>Atendemos mayoristas y pedidos a domicilio en todo Nariño.</p>
+          <a href="https://wa.me/573207639891" target="_blank" rel="noopener">+57 320 763 9891</a>
+        </div>
+        <div class="contact-card reveal-left stagger-3">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--green-dark)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>Horario de atención</h4>
+          <p>Lunes a Viernes: 7:00 AM – 6:00 PM<br/>Sábados: 7:00 AM – 2:00 PM</p>
+        </div>
+        <a href="https://wa.me/573207639891" target="_blank" rel="noopener" class="btn btn-whats reveal-up" style="justify-content:center">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.7-.3-.5.3-.5.9-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7 2 .8 2.8.9 3.8.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.2-1.4c1.4.7 3 1.1 4.8 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2"/></svg>
+          Iniciar pedido ahora
+        </a>
+      </div>
+      <div class="map-wrap reveal-right">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7!2d-77.2862558!3d1.2132209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed48279318921%3A0x41d247dbc4f01c8f!2sLuguicol!5e0!3m2!1ses!2sco!4v1700000000000"
+          width="100%" height="100%"
+          style="border:0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación Power Milk en Pasto, Nariño">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Power Milk" class="footer-logo" />
+        <p>Productos Alimenticios Power Milk · Del campo a tu mesa desde 2010. Quesos artesanales de pasta hilada del altiplano nariñense.</p>
+        <div class="footer-badges">
+          <span class="badge-pill">Hecho en Nariño</span>
+          <span class="badge-pill">Campo colombiano</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <a href="#top">Inicio</a>
+        <a href="#propuesta">¿Por qué nosotros?</a>
+        <a href="#productos">Productos</a>
+        <a href="#proceso">El Proceso</a>
+        <a href="#galeria">Galería</a>
+      </div>
+      <div class="footer-col">
+        <h5>Productos</h5>
+        <span>Queso Doble Crema</span>
+        <span>Mozzarella</span>
+        <span>Doble Crema Tajado</span>
+        <span>Requesón</span>
+        <span>Crema de Leche</span>
+        <span>Cuajada · Campesino</span>
+        <span>Dulce de Leche</span>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/573207639891" target="_blank" rel="noopener">320 763 9891</a>
+        <a href="https://www.google.com/maps/place/Luguicol" target="_blank" rel="noopener">Calle 10 #28A-12, Pasto</a>
+        <span>La Aurora · Edificio SpacioLA10</span>
+        <span>Lun–Vie 7AM–6PM</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Productos Alimenticios Power Milk. Todos los derechos reservados.</span>
+      <div class="footer-sustain">
+        <span>Campo colombiano</span>
+        <span>Precios justos</span>
+        <span>Calidad garantizada</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573207639891" target="_blank" rel="noopener" class="float-whats" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.7-.3-.5.3-.5.9-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7 2 .8 2.8.9 3.8.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.2-1.4c1.4.7 3 1.1 4.8 1.1 5.5 0 10-4.5 10-10S17.5 2 12 2"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Progress bar
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+  navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navMobile.classList.remove('open');
+  }));
+
+  // Milk particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 14 + 4;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:${Math.random()*40}%;animation-duration:${Math.random()*9+6}s;animation-delay:${Math.random()*9}s;opacity:${(Math.random()*0.4+0.15).toFixed(2)}`;
+    container.appendChild(p);
+  }
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
