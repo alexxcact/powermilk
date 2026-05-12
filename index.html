@@ -27,9 +27,9 @@
       --text-primary: #1A1F12;
       --text-secondary: #3A4832;
       --text-muted: #6B7A5A;
-      --green: #9FD41C;
-      --green-dark: #7BB512;
-      --green-deep: #2F6B0E;
+      --green: #C8F135;
+      --green-dark: #9FD41C;
+      --green-deep: #4A8A10;
       --blue: #36B5E5;
       --gold: #FFD93D;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -128,13 +128,13 @@
     }
 
     .nav-logo img {
-      height: 64px;
-      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.28));
+      height: 110px;
+      filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.32));
       transition: height .3s, transform .3s
     }
 
     .nav.scrolled .nav-logo img {
-      height: 54px
+      height: 80px
     }
 
     .nav-logo:hover img {
@@ -434,7 +434,7 @@
     .hero {
       position: relative;
       min-height: 100vh;
-      background: radial-gradient(ellipse at top right, rgba(159, 212, 28, 0.25), transparent 55%), radial-gradient(ellipse at bottom left, rgba(47, 107, 14, 0.55), transparent 55%), linear-gradient(155deg, #1A1F12 0%, #2F6B0E 55%, #3A8F10 100%);
+      background: radial-gradient(ellipse at top right, rgba(220, 255, 80, 0.45), transparent 55%), radial-gradient(ellipse at bottom left, rgba(100, 200, 30, 0.45), transparent 55%), linear-gradient(155deg, #2A5A0E 0%, #52B015 50%, #82D825 100%);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -2202,15 +2202,15 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="hero-stat-num">15+</div>
+            <div class="hero-stat-num" data-count="15" data-suffix="+">15+</div>
             <div class="hero-stat-lbl">Años de tradición</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">8</div>
+            <div class="hero-stat-num" data-count="8">8</div>
             <div class="hero-stat-lbl">Productos lácteos</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-num" data-count="100" data-suffix="%">100%</div>
             <div class="hero-stat-lbl">Leche campesina</div>
           </div>
         </div>
@@ -2876,22 +2876,22 @@
       <div class="cobertura-body">
         <div class="cobertura-stats">
           <div class="cob-stat reveal-scale stagger-1">
-            <div class="cob-stat-num">15+</div>
+            <div class="cob-stat-num" data-count="15" data-suffix="+">15+</div>
             <div class="cob-stat-lbl">Años distribuyendo</div>
             <div class="cob-stat-sub">En el mercado regional y nacional</div>
           </div>
           <div class="cob-stat reveal-scale stagger-2">
-            <div class="cob-stat-num">8</div>
+            <div class="cob-stat-num" data-count="8">8</div>
             <div class="cob-stat-lbl">Referencias de producto</div>
             <div class="cob-stat-sub">Para todos los usos y gustos</div>
           </div>
           <div class="cob-stat reveal-scale stagger-3">
-            <div class="cob-stat-num">3.200</div>
+            <div class="cob-stat-num" data-count="3200" data-suffix="" data-fmt="true">3.200</div>
             <div class="cob-stat-lbl">Metros sobre el nivel del mar</div>
             <div class="cob-stat-sub">Donde nace nuestra leche</div>
           </div>
           <div class="cob-stat reveal-scale stagger-4">
-            <div class="cob-stat-num">100%</div>
+            <div class="cob-stat-num" data-count="100" data-suffix="%">100%</div>
             <div class="cob-stat-lbl">Natural y artesanal</div>
             <div class="cob-stat-sub">Sin conservantes artificiales</div>
           </div>
@@ -3085,6 +3085,7 @@
     </svg>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -3156,6 +3157,124 @@
         if (window.scrollY < 800) heroCow.style.transform = `translateY(${window.scrollY * 0.12}px)`;
       }, { passive: true });
     }
+
+    // ══════════════════════════════════════════
+    // ANIME.JS ENHANCED ANIMATIONS
+    // ══════════════════════════════════════════
+
+    // — Hide hero elements before first paint so entrance animation is clean
+    ['.hero-eyebrow','.hero-title','.hero-sub','.hero-btns','.hero-stat','.hero-visual','.hero-badge']
+      .forEach(sel => document.querySelectorAll(sel).forEach(el => { el.style.opacity = '0'; }));
+
+    // — Hero entrance timeline
+    anime.timeline({ easing: 'easeOutExpo' })
+      .add({ targets: '.hero-eyebrow', opacity: [0,1], translateY: [24,0], duration: 700 })
+      .add({ targets: '.hero-title',   opacity: [0,1], translateY: [80,0], duration: 1000 }, '-=350')
+      .add({ targets: '.hero-sub',     opacity: [0,1], translateY: [24,0], duration: 700  }, '-=550')
+      .add({ targets: '.hero-btns',    opacity: [0,1], translateY: [18,0], duration: 600  }, '-=450')
+      .add({ targets: '.hero-stat',    opacity: [0,1], translateY: [18,0], delay: anime.stagger(130), duration: 500 }, '-=350')
+      .add({ targets: '.hero-visual',  opacity: [0,1], translateX: [60,0], duration: 900  }, '-=1400')
+      .add({ targets: '.hero-badge',   opacity: [0,1], scale: [0.4,1],     delay: anime.stagger(220), duration: 700, easing: 'easeOutBack' }, '-=300');
+
+    // — Mouse parallax on hero badges (desktop only)
+    if (window.matchMedia('(min-width:1024px)').matches) {
+      let _rAF = null;
+      document.querySelector('.hero').addEventListener('mousemove', e => {
+        if (_rAF) return;
+        _rAF = requestAnimationFrame(() => {
+          const r = e.currentTarget.getBoundingClientRect();
+          const mx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
+          const my = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+          anime({ targets: '.hero-badge.badge-a', translateX: mx * -22, translateY: my * -14, duration: 550, easing: 'easeOutQuad' });
+          anime({ targets: '.hero-badge.badge-b', translateX: mx *  26, translateY: my *  18, duration: 550, easing: 'easeOutQuad' });
+          _rAF = null;
+        });
+      });
+    }
+
+    // — Counter animation (triggered on scroll into view)
+    const _counterIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        _counterIO.unobserve(entry.target);
+        const el     = entry.target;
+        const count  = +el.dataset.count;
+        const suffix = el.dataset.suffix || '';
+        const fmt    = el.dataset.fmt === 'true';
+        const obj    = { v: 0 };
+        anime({
+          targets: obj, v: count, duration: 2200, easing: 'easeOutExpo',
+          update() {
+            const rounded = Math.round(obj.v);
+            el.textContent = (fmt ? rounded.toLocaleString('es-CO') : rounded) + suffix;
+          }
+        });
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(el => _counterIO.observe(el));
+
+    // — Valor cards stagger entrance
+    const _valorIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        _valorIO.unobserve(e.target);
+        anime({
+          targets: e.target.querySelectorAll('.valor'),
+          opacity: [0,1], translateY: [32,0], scale: [0.94,1],
+          delay: anime.stagger(110), duration: 650, easing: 'easeOutExpo'
+        });
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.valores').forEach(grid => {
+      grid.querySelectorAll('.valor').forEach(v => { v.style.opacity = '0'; });
+      _valorIO.observe(grid);
+    });
+
+    // — Timeline dots breathing pulse (loop)
+    anime({
+      targets: '.t-dot',
+      scale: [1, 1.14],
+      delay: anime.stagger(280),
+      duration: 950,
+      loop: true,
+      direction: 'alternate',
+      easing: 'easeInOutSine'
+    });
+
+    // — City tags wave entrance in cobertura
+    const _cobIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        _cobIO.unobserve(e.target);
+        anime({
+          targets: e.target.querySelectorAll('.city-tag'),
+          opacity: [0,1], translateY: [18,0], scale: [0.88,1],
+          delay: anime.stagger(55), duration: 480, easing: 'easeOutExpo'
+        });
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.cobertura-cities').forEach(section => {
+      section.querySelectorAll('.city-tag').forEach(t => { t.style.opacity = '0'; });
+      _cobIO.observe(section);
+    });
+
+    // — Recipe cards stagger entrance
+    const _recIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        _recIO.unobserve(e.target);
+        anime({
+          targets: e.target.querySelectorAll('.recipe-card'),
+          opacity: [0,1], translateY: [44,0], scale: [0.95,1],
+          delay: anime.stagger(90, { from: 'first' }),
+          duration: 700, easing: 'easeOutExpo'
+        });
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.recetas-grid').forEach(grid => {
+      grid.querySelectorAll('.recipe-card').forEach(c => { c.style.opacity = '0'; });
+      _recIO.observe(grid);
+    });
   </script>
 </body>
 
