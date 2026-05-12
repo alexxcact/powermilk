@@ -23,7 +23,7 @@
     :root {
       --bg-page: #F4F9EB;
       --bg-card: #FFFFFF;
-      --bg-dark: #1A1F12;
+      --bg-dark: #2D4A1A;
       --text-primary: #1A1F12;
       --text-secondary: #3A4832;
       --text-muted: #6B7A5A;
@@ -939,6 +939,13 @@
       color: var(--text-muted)
     }
 
+    /* ──────────────────── ORIGEN BANNER ──────────────────── */
+    .origen-banner{position:relative;height:440px;overflow:hidden;display:flex;align-items:center}
+    .origen-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .origen-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,58,16,0.78) 0%,rgba(60,130,20,0.45) 100%);display:flex;align-items:center;width:100%}
+    .origen-content{position:relative;z-index:2;padding:20px 0}
+    @media(max-width:768px){.origen-banner{height:340px}}
+
     /* ──────────────────── MISIÓN / VISIÓN ──────────────────── */
     .mv {
       padding: 60px 0 120px;
@@ -1146,7 +1153,7 @@
     /* ──────────────────── CALIDAD ──────────────────── */
     .calidad {
       padding: 120px 0;
-      background: radial-gradient(circle at 80% 20%, rgba(159, 212, 28, 0.15), transparent 50%), linear-gradient(135deg, var(--bg-dark) 0%, #2F3322 100%);
+      background: radial-gradient(circle at 80% 20%, rgba(159, 212, 28, 0.15), transparent 50%), linear-gradient(135deg, var(--bg-dark) 0%, #3D5A22 100%);
       color: white;
       position: relative;
       overflow: hidden
@@ -2316,7 +2323,11 @@
             Desde Cumbal, Nariño · Para toda Colombia
           </div>
         </div>
-        <div class="nosotros-card reveal-right">
+        <div class="nosotros-card reveal-right" style="padding:0;overflow:hidden">
+          <div style="height:220px;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0">
+            <img src="sala-produccion.jpg" alt="Sala de producción Power Milk" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div style="padding:40px">
           <div class="card-header">
             <img src="mascota.png" alt="" class="card-cow" />
             <div>
@@ -2361,10 +2372,27 @@
               <small>Procesos certificados y confiables</small>
             </div>
           </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ══════════════════════════════════════════
+     ORIGEN BANNER
+══════════════════════════════════════════ -->
+  <div class="origen-banner" aria-hidden="false">
+    <img src="cumbal-volcan.jpg" alt="Volcán Cumbal, Nariño — origen de Power Milk" class="origen-img" />
+    <div class="origen-overlay">
+      <div class="container">
+        <div class="origen-content reveal-up">
+          <span class="eyebrow eyebrow-light">Cumbal, Nariño · 3.200 msnm</span>
+          <h2 class="heading-serif" style="color:white;margin-top:12px">Desde el <em style="color:var(--green)">corazón del altiplano</em></h2>
+          <p style="color:rgba(255,255,255,0.80);font-size:17px;max-width:560px;margin-top:12px;line-height:1.7">Rodeados por el volcán Cumbal y los páramos nariñenses, nuestros productores cuidan cada litro de leche con la dedicación y el amor de siempre.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════
      MISIÓN / VISIÓN
@@ -2404,10 +2432,13 @@
         <p class="section-sub">Quesos frescos de pasta hilada, derivados lácteos y postres artesanales. Todos elaborados
           con leche fresca del altiplano nariñense.</p>
       </div>
+      <div class="reveal-up" style="margin-bottom:48px;border-radius:var(--r-lg);overflow:hidden;height:320px;box-shadow:var(--shadow-lg)">
+        <img src="todos-productos.jpg" alt="Todos los productos Power Milk" style="width:100%;height:100%;object-fit:cover" />
+      </div>
       <div class="products-grid">
         <article class="prod-card featured reveal-left">
           <div class="prod-media">
-            <img src="producto-doble-crema.jpg" alt="Queso Doble Crema Power Milk" loading="lazy" />
+            <img src="queso-doble-crema.jpg" alt="Queso Doble Crema Power Milk" loading="lazy" />
             <span class="prod-tag" style="background:var(--gold);color:var(--text-primary)">★ Estrella</span>
           </div>
           <div class="prod-body">
@@ -2516,6 +2547,9 @@
             conforme con la legislación vigente, mediante el compromiso de ofrecer productos de calidad obtenidos por
             medio de procesos y procedimientos que mejoramos continuamente para hacerlos más confiables, eficientes y
             disponibles.</p>
+          <div style="margin-top:28px;border-radius:var(--r-md);overflow:hidden;height:210px;box-shadow:0 12px 32px rgba(0,0,0,0.25)">
+            <img src="laboratorio.jpg" alt="Laboratorio de calidad Power Milk" style="width:100%;height:100%;object-fit:cover" />
+          </div>
         </div>
         <div class="valores reveal-right">
           <div class="valor">
@@ -2609,6 +2643,9 @@
             <h3>Hilado y Moldeo Artesanal</h3>
             <p>El proceso de pasta hilada — único de nuestros quesos — se realiza a mano, estirando y amasando la
               cuajada caliente hasta lograr la textura y elasticidad perfectas.</p>
+            <div style="margin-top:16px;border-radius:var(--r-md);overflow:hidden;height:180px">
+              <img src="queso.jpg" alt="Hilado artesanal del queso Power Milk" style="width:100%;height:100%;object-fit:cover" />
+            </div>
           </div>
           <div class="t-dot">03</div>
           <div class="t-empty"></div>
@@ -2641,8 +2678,8 @@
       <div class="recetas-grid">
 
         <article class="recipe-card reveal-up stagger-1">
-          <div class="recipe-media" style="background:linear-gradient(135deg,#FFECD2,#FCB69F)">
-            <div class="recipe-media-inner">🍕</div>
+          <div class="recipe-media">
+            <img src="pizza.jpg" alt="Pizza con Mozzarella Power Milk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
             <span class="recipe-badge">Para pizza</span>
             <div class="recipe-meta-top">
               <span class="recipe-meta-chip">⏱ 30 min</span>
