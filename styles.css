@@ -503,12 +503,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    MARQUEE
    ============================================ */
 .marquee {
-  background: var(--pm-ink);
+  background:
+    linear-gradient(var(--pm-lime), var(--pm-lime)) 80px 0 / calc(100% - 160px) 4px no-repeat,
+    linear-gradient(var(--pm-lime), var(--pm-lime)) 80px 100% / calc(100% - 160px) 4px no-repeat,
+    var(--pm-ink);
   overflow: hidden;
   position: relative;
-  border-top: 4px solid var(--pm-lime);
-  border-bottom: 4px solid var(--pm-lime);
-  padding: 20px 0;
+  padding: 24px 0;
 }
 .marquee::before,
 .marquee::after {
