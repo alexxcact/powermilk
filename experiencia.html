@@ -115,8 +115,8 @@
     .hero-visual{display:flex;justify-content:center;align-items:center}
     .hero-img-wrap{position:relative;width:100%;max-width:420px}
     .hero-glow{position:absolute;inset:-10%;background:radial-gradient(circle,rgba(159,212,28,0.3) 0%,transparent 65%);filter:blur(40px)}
-    .hero-mascota{position:relative;z-index:2;width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.4));animation:cowFloat 4s ease-in-out infinite}
-    @keyframes cowFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+    .hero-mascota{position:relative;z-index:2;width:100%;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.4));transform-origin:center bottom;animation:cowFloat 4s cubic-bezier(0.36,0.07,0.19,0.97) infinite}
+    @keyframes cowFloat{0%{transform:translateY(0) rotate(-1deg) scaleX(1) scaleY(1)}8%{transform:translateY(3px) rotate(-1deg) scaleX(1.07) scaleY(0.93)}22%{transform:translateY(-26px) rotate(-3deg) scaleX(0.96) scaleY(1.05)}38%{transform:translateY(-33px) rotate(1deg) scaleX(1) scaleY(1)}52%{transform:translateY(-22px) rotate(3deg) scaleX(0.97) scaleY(1.04)}65%{transform:translateY(3px) rotate(0deg) scaleX(1.08) scaleY(0.92)}74%{transform:translateY(-10px) rotate(-1.5deg) scaleX(0.99) scaleY(1.02)}83%{transform:translateY(0) rotate(0.5deg) scaleX(1.03) scaleY(0.97)}91%{transform:translateY(-4px) rotate(-0.5deg) scaleX(1) scaleY(1)}100%{transform:translateY(0) rotate(-1deg) scaleX(1) scaleY(1)}}
     .hero-badge{position:absolute;z-index:3;background:white;padding:12px 18px;border-radius:100px;display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--text-primary);box-shadow:0 12px 30px rgba(0,0,0,0.2);animation:badgeFloat 5s ease-in-out infinite}
     @keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
     .badge-a{top:5%;right:-5%;animation-delay:0s}

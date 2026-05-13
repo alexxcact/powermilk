@@ -84,4 +84,48 @@
     }, { passive: true });
   }
 
+  // ---------- Lightbox para imágenes de productos ----------
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev  = document.getElementById('lightboxPrev');
+  const lightboxNext  = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+
+  if (lightbox) {
+    const imgs = Array.from(document.querySelectorAll('.producto-media img'));
+    let current = 0;
+
+    const showImage = (index) => {
+      current = (index + imgs.length) % imgs.length;
+      lightboxImg.src = imgs[current].src;
+      lightboxImg.alt = imgs[current].alt;
+      lightboxCounter.textContent = `${current + 1} / ${imgs.length}`;
+    };
+
+    imgs.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        showImage(i);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => showImage(current - 1));
+    lightboxNext.addEventListener('click', () => showImage(current + 1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   showImage(current - 1);
+      if (e.key === 'ArrowRight')  showImage(current + 1);
+    });
+  }
+
 })();
