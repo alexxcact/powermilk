@@ -508,8 +508,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   border-top: 4px solid var(--pm-lime);
   border-bottom: 4px solid var(--pm-lime);
-  padding: 20px 60px;
+  padding: 20px 0;
 }
+.marquee::before,
+.marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: var(--pm-ink);
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee::before { left: 0; }
+.marquee::after  { right: 0; }
 .marquee-track {
   display: flex;
   gap: 20px;
