@@ -509,6 +509,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-top: 4px solid var(--pm-lime);
   border-bottom: 4px solid var(--pm-lime);
   padding: 20px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 80px, black calc(100% - 80px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 80px, black calc(100% - 80px), transparent 100%);
 }
 .marquee-track {
   display: flex;
