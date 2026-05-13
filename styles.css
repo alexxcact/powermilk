@@ -503,30 +503,48 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    MARQUEE
    ============================================ */
 .marquee {
-  background: var(--pm-cyan);
-  color: var(--pm-white);
-  padding: 22px 0;
+  background: var(--pm-ink);
   overflow: hidden;
   position: relative;
   border-top: 4px solid var(--pm-lime);
   border-bottom: 4px solid var(--pm-lime);
+  padding: 20px 0;
 }
 .marquee-track {
   display: flex;
-  gap: 28px;
-  white-space: nowrap;
-  animation: marquee 40s linear infinite;
+  gap: 20px;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  cursor: default;
+}
+.marquee-item img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 2px solid rgba(217, 218, 65, 0.3);
+  transition: transform 0.3s, border-color 0.3s;
+  display: block;
+}
+.marquee-item:hover img {
+  transform: scale(1.06);
+  border-color: var(--pm-lime);
+}
+.marquee-item span {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.5px;
-}
-.marquee-track span:nth-child(odd) {
-  color: var(--pm-lime);
-}
-.marquee-track span:nth-child(even) {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  letter-spacing: 0.3px;
 }
 @keyframes marquee {
   0% { transform: translateX(0); }
