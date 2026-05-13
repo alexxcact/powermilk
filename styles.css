@@ -1536,6 +1536,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .stat-sep { display: none; }
   .stat { flex: 1; min-width: 100px; }
 
+  .marquee {
+    background:
+      linear-gradient(var(--pm-lime), var(--pm-lime)) 20px 0 / calc(100% - 40px) 4px no-repeat,
+      linear-gradient(var(--pm-lime), var(--pm-lime)) 20px 100% / calc(100% - 40px) 4px no-repeat,
+      var(--pm-ink);
+  }
+  .marquee::before,
+  .marquee::after { width: 20px; }
+
   .recetas-grid { grid-template-columns: 1fr; }
   .cobertura-stats { grid-template-columns: repeat(2, 1fr); }
   .cobertura-visual img { min-height: 200px; }
