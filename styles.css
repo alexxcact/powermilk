@@ -1141,7 +1141,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 .footer-logo {
-  height: 36px;
+  height: 80px;
   margin-bottom: 20px;
   filter: brightness(1.15);
 }
