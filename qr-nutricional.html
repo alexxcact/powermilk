@@ -6,149 +6,112 @@
   <title>Códigos QR Nutricionales · Power Milk</title>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <style>
-    :root {
-      --cyan: #42A2C2;
-      --ink: #1F4A5C;
-      --line: #E2EDF1;
-    }
+    :root { --cyan: #42A2C2; --ink: #1F4A5C; --line: #E2EDF1; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, sans-serif;
-      background: #f4f8fa;
-      color: var(--ink);
-      padding: 40px 24px;
-    }
-    .page-head {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .page-head img { height: 70px; margin: 0 auto 16px; display: block; }
-    .page-head h1 { font-size: 22px; font-weight: 700; color: var(--ink); }
-    .page-head p  { font-size: 14px; color: #6f8a98; margin-top: 6px; }
+    body { font-family: system-ui, sans-serif; background: #f4f8fa; color: var(--ink); padding: 40px 24px; }
 
+    .page-head { text-align: center; margin-bottom: 40px; }
+    .page-head img { height: 70px; margin: 0 auto 16px; display: block; }
+    .page-head h1 { font-size: 22px; font-weight: 700; }
+    .page-head p  { font-size: 14px; color: #6f8a98; margin-top: 6px; }
     .btn-print {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 10px 24px;
-      background: var(--cyan);
-      color: #fff;
-      border: none;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+      display: inline-block; margin-top: 16px; padding: 10px 24px;
+      background: var(--cyan); color: #fff; border: none;
+      border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer;
     }
 
     .group { margin-bottom: 40px; }
     .group-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--cyan);
-      border-bottom: 2px solid var(--line);
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 13px; font-weight: 700; color: var(--cyan);
+      border-bottom: 2px solid var(--line); padding-bottom: 8px;
+      margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
     }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .grid { display: flex; flex-wrap: wrap; gap: 20px; }
 
     .qr-card {
-      background: #fff;
-      border: 1.5px solid var(--line);
-      border-radius: 16px;
-      padding: 20px;
-      width: 200px;
-      text-align: center;
-      page-break-inside: avoid;
+      background: #fff; border: 1.5px solid var(--line); border-radius: 16px;
+      padding: 20px; width: 210px; text-align: center; page-break-inside: avoid;
     }
     .qr-card canvas { display: block; margin: 0 auto 12px; }
-    .qr-card .prod  { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.3; }
-    .qr-card .size  { font-size: 12px; color: var(--cyan); font-weight: 600; margin-top: 4px; }
-    .qr-card .url   { font-size: 9px; color: #aaa; margin-top: 8px; word-break: break-all; }
+    .qr-card .prod { font-size: 13px; font-weight: 700; line-height: 1.3; }
+    .qr-card .size { font-size: 12px; color: var(--cyan); font-weight: 600; margin-top: 4px; }
+    .qr-card .url  { font-size: 9px; color: #bbb; margin-top: 8px; word-break: break-all; }
 
     @media print {
       body { background: #fff; padding: 10px; }
       .btn-print { display: none; }
-      .qr-card { border: 1px solid #ddd; width: 180px; padding: 14px; }
-      .page-head { margin-bottom: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="page-head">
-    <img src="logo.png" alt="Power Milk" />
-    <h1>Códigos QR · Tablas Nutricionales</h1>
-    <p>Escanea el código QR con tu celular para ver la información nutricional del producto.</p>
-    <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
-  </div>
+<div class="page-head">
+  <img src="logo.png" alt="Power Milk" />
+  <h1>Códigos QR · Tablas Nutricionales</h1>
+  <p>Escanea el QR con tu celular para ver la información nutricional del producto al instante.</p>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+</div>
 
-  <div id="contenido"></div>
+<div id="contenido"></div>
 
-  <script>
-    const BASE = 'https://alexxcact.github.io/powermilk/';
+<script>
+  const BASE = 'https://alexxcact.github.io/powermilk/';
 
-    const PRODUCTOS = [
-      {
-        grupo: 'Queso Doble Crema',
-        items: [
-          { nombre: 'Queso Doble Crema', size: '450 g',         key: 'doble-crema', idx: 0 },
-          { nombre: 'Queso Doble Crema', size: '220 g',         key: 'doble-crema', idx: 1 },
-        ]
-      },
-      {
-        grupo: 'Doble Crema Tajado',
-        items: [
-          { nombre: 'Doble Crema Tajado', size: '420 g',        key: 'tajado', idx: 0 },
-          { nombre: 'Doble Crema Tajado', size: '210 g',        key: 'tajado', idx: 1 },
-          { nombre: 'Doble Crema Tajado', size: '400 g',        key: 'tajado', idx: 2 },
-          { nombre: 'Doble Crema Tajado', size: '200 g',        key: 'tajado', idx: 3 },
-        ]
-      },
-      {
-        grupo: 'Queso Mozzarella',
-        items: [
-          { nombre: 'Queso Mozzarella',   size: '450 g (entero)', key: 'mozzarella', idx: 0 },
-          { nombre: 'Queso Mozzarella',   size: '450 g (tajado)', key: 'mozzarella', idx: 1 },
-        ]
-      },
-    ];
+  const GRUPOS = [
+    {
+      titulo: 'Queso Doble Crema',
+      items: [
+        { nombre: 'Queso Doble Crema', size: '450 g', hash: 'queso-doble-crema-450g' },
+        { nombre: 'Queso Doble Crema', size: '220 g', hash: 'queso-doble-crema-220g' },
+      ]
+    },
+    {
+      titulo: 'Doble Crema Tajado',
+      items: [
+        { nombre: 'Doble Crema Tajado', size: '420 g', hash: 'queso-doble-crema-tajado-420g' },
+        { nombre: 'Doble Crema Tajado', size: '210 g', hash: 'queso-doble-crema-tajado-210g' },
+        { nombre: 'Doble Crema Tajado', size: '400 g', hash: 'queso-doble-crema-tajado-400g' },
+        { nombre: 'Doble Crema Tajado', size: '200 g', hash: 'queso-doble-crema-tajado-200g' },
+      ]
+    },
+    {
+      titulo: 'Queso Mozzarella',
+      items: [
+        { nombre: 'Queso Mozzarella', size: '450 g (entero)', hash: 'queso-mozzarella-450g' },
+        { nombre: 'Queso Mozzarella', size: '450 g (tajado)', hash: 'queso-mozzarella-tajado-450g' },
+      ]
+    },
+  ];
 
-    const contenido = document.getElementById('contenido');
+  const contenido = document.getElementById('contenido');
 
-    PRODUCTOS.forEach(grupo => {
-      const groupEl = document.createElement('div');
-      groupEl.className = 'group';
-      groupEl.innerHTML = `<div class="group-title">${grupo.grupo}</div><div class="grid" id="grid-${grupo.grupo.replace(/\s/g,'-')}"></div>`;
-      contenido.appendChild(groupEl);
+  GRUPOS.forEach(grupo => {
+    const section = document.createElement('div');
+    section.className = 'group';
+    section.innerHTML = `<div class="group-title">${grupo.titulo}</div><div class="grid" id="g-${grupo.titulo}"></div>`;
+    contenido.appendChild(section);
+    const grid = section.querySelector('.grid');
 
-      const grid = groupEl.querySelector('.grid');
+    grupo.items.forEach(item => {
+      const url = BASE + '#' + item.hash;
+      const id  = 'qr-' + item.hash;
 
-      grupo.items.forEach(item => {
-        const url = `${BASE}?nutri=${item.key}&size=${item.idx}`;
+      const card = document.createElement('div');
+      card.className = 'qr-card';
+      card.innerHTML = `
+        <canvas id="${id}"></canvas>
+        <div class="prod">${item.nombre}</div>
+        <div class="size">${item.size}</div>
+        <div class="url">${url}</div>
+      `;
+      grid.appendChild(card);
 
-        const card = document.createElement('div');
-        card.className = 'qr-card';
-        card.innerHTML = `
-          <canvas id="qr-${item.key}-${item.idx}"></canvas>
-          <div class="prod">${item.nombre}</div>
-          <div class="size">${item.size}</div>
-          <div class="url">${url}</div>
-        `;
-        grid.appendChild(card);
-
-        QRCode.toCanvas(
-          document.getElementById(`qr-${item.key}-${item.idx}`),
-          url,
-          { width: 160, margin: 1, color: { dark: '#1F4A5C', light: '#ffffff' } }
-        );
+      QRCode.toCanvas(document.getElementById(id), url, {
+        width: 170, margin: 1,
+        color: { dark: '#1F4A5C', light: '#ffffff' }
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>

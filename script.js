@@ -435,12 +435,20 @@
       if (e.key === 'Escape' && nutriModal.classList.contains('open')) closeNutriModal();
     });
 
-    // Auto-abrir modal si viene de un QR (?nutri=doble-crema&size=0)
-    const params = new URLSearchParams(window.location.search);
-    const nutriParam = params.get('nutri');
-    if (nutriParam && NUTRI_DATA[nutriParam]) {
-      const sizeParam = Math.max(0, parseInt(params.get('size') || '0', 10));
-      openNutriModal(nutriParam, sizeParam);
+    // Auto-abrir modal desde QR (#hash único por presentación)
+    const QR_MAP = {
+      'queso-doble-crema-450g':         { key: 'doble-crema',  size: 0 },
+      'queso-doble-crema-220g':         { key: 'doble-crema',  size: 1 },
+      'queso-doble-crema-tajado-420g':  { key: 'tajado',       size: 0 },
+      'queso-doble-crema-tajado-210g':  { key: 'tajado',       size: 1 },
+      'queso-doble-crema-tajado-400g':  { key: 'tajado',       size: 2 },
+      'queso-doble-crema-tajado-200g':  { key: 'tajado',       size: 3 },
+      'queso-mozzarella-450g':          { key: 'mozzarella',   size: 0 },
+      'queso-mozzarella-tajado-450g':   { key: 'mozzarella',   size: 1 },
+    };
+    const hash = window.location.hash.slice(1);
+    if (QR_MAP[hash]) {
+      openNutriModal(QR_MAP[hash].key, QR_MAP[hash].size);
     }
   }
 
