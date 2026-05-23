@@ -1804,29 +1804,48 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    TABLAS NUTRICIONALES
    ============================================ */
 
-.btn-nutri {
-  display: inline-flex;
+.nutri-links {
+  display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   margin-top: 14px;
-  padding: 8px 16px;
-  border: 1.5px solid var(--pm-cyan);
+  padding: 10px 12px;
+  background: var(--pm-cyan-mist);
+  border: 1.5px solid var(--pm-cyan-soft);
   border-radius: var(--radius-sm);
+}
+.nutri-links-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--pm-cyan-deep);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.nutri-link {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--pm-white);
+  border: 1.5px solid var(--pm-cyan);
   color: var(--pm-cyan-deep);
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  background: var(--pm-cyan-mist);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  line-height: 1;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+  white-space: nowrap;
 }
-.btn-nutri:hover {
+.nutri-link:hover {
   background: var(--pm-cyan);
   color: var(--pm-white);
   transform: translateY(-1px);
 }
-.btn-nutri svg { flex-shrink: 0; }
 
 .nutri-modal {
   position: fixed;
