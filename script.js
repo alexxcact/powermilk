@@ -409,8 +409,8 @@
         </table>`;
     };
 
-    const openNutriModal = (productKey) => {
-      renderNutri(productKey, 0);
+    const openNutriModal = (productKey, sizeIdx = 0) => {
+      renderNutri(productKey, sizeIdx);
       nutriModal.classList.add('open');
       document.body.style.overflow = 'hidden';
     };
@@ -434,6 +434,14 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && nutriModal.classList.contains('open')) closeNutriModal();
     });
+
+    // Auto-abrir modal si viene de un QR (?nutri=doble-crema&size=0)
+    const params = new URLSearchParams(window.location.search);
+    const nutriParam = params.get('nutri');
+    if (nutriParam && NUTRI_DATA[nutriParam]) {
+      const sizeParam = Math.max(0, parseInt(params.get('size') || '0', 10));
+      openNutriModal(nutriParam, sizeParam);
+    }
   }
 
 })();
