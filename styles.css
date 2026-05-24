@@ -1244,6 +1244,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 16px;
 }
 .footer-tag-mobile {
   font-family: var(--font-display);
@@ -1681,6 +1683,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+.footer-dev { text-align: center; }
 
   .hero-badge { padding: 8px 14px; }
   .hero-badge span { font-size: 18px; }
@@ -2021,6 +2024,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--pm-grey);
   margin-top: 14px;
   line-height: 1.55;
+}
+
+.footer-dev {
+  padding-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+.footer-dev strong {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
 }
 
 @media (max-width: 480px) {
