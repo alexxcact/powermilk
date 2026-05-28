@@ -24,12 +24,11 @@
   line-height: 1.4;
 }
 
-/* Caption: encabezado con título y porciones */
+/* Encabezado con título y porciones — dentro de la tabla como primer <td> de <thead> */
 .tabla-nutricional .tn-caption {
   text-align: left;
   padding: 12px 14px;
   border-bottom: 3px solid #000;
-  caption-side: top;
 }
 
 .tabla-nutricional .tn-caption h2 {

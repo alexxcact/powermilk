@@ -1119,6 +1119,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: block;
   filter: saturate(1.1);
 }
+.ubicacion-foto {
+  margin-top: 20px;
+}
+.ubicacion-foto img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  display: block;
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+}
 
 /* ============================================
    CTA FINAL
