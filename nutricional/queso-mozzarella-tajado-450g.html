@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Queso Mozzarella Tajado 450 g (tajado) · Información Nutricional · Power Milk</title>
   <link rel="icon" type="image/png" href="../logo.png"/>
+  <link rel="stylesheet" href="tabla-nutricional.css"/>
   <style>
     :root{--cyan:#42A2C2;--cyan-deep:#1F6B85;--cyan-mist:#EAF5F9;--ink:#1F4A5C;--grey:#6F8A98;--line:#E2EDF1;--lime:#D9DA41}
     *{box-sizing:border-box;margin:0;padding:0}
@@ -14,22 +15,6 @@
     .top h1{font-size:21px;font-weight:800;color:#fff;line-height:1.2}
     .top .pres{display:inline-block;margin-top:10px;background:var(--lime);color:var(--ink);font-size:13px;font-weight:700;padding:5px 16px;border-radius:100px}
     .card{background:#fff;border-radius:20px;margin:0 16px;margin-top:-18px;padding:22px 18px;box-shadow:0 8px 30px rgba(31,74,92,0.12)}
-    .info-bar{display:flex;gap:14px;flex-wrap:wrap;background:var(--cyan-mist);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--grey);margin-bottom:16px;line-height:1.5}
-    .info-bar b{color:var(--ink)}
-    table{width:100%;border-collapse:collapse;border:2px solid #1a1a1a;font-size:13px}
-    thead tr{background:var(--ink);color:#fff}
-    th{padding:8px 10px;font-weight:700;font-size:12px;text-align:right}
-    th.lbl{text-align:left}
-    td{padding:5px 10px;border-top:1px solid #d0d0d0;text-align:right;color:var(--ink)}
-    td.lbl{text-align:left}
-    .kcal td{font-weight:800;font-size:18px;padding:11px 10px!important;background:#f5f5f5;border-top:none!important;border-bottom:3px solid #1a1a1a}
-    .kcal td.lbl{font-size:14px;font-weight:700}
-    .i1 td.lbl{padding-left:18px}
-    .i2 td.lbl{padding-left:34px}
-    .sep td{height:3px;background:#1a1a1a;padding:0!important;border:none!important}
-    .micro td{color:var(--grey);font-size:12px;border-top:1px solid #e0e0e0}
-    .micro td.lbl{color:var(--grey)}
-    .footnote{font-size:11px;color:var(--grey);margin-top:14px;line-height:1.6}
     .back{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:24px;color:var(--cyan-deep);font-size:13px;font-weight:600;text-decoration:none}
     .back:hover{text-decoration:underline}
   </style>
@@ -41,43 +26,45 @@
     <span class="pres">450 g (tajado)</span>
   </div>
   <div class="card">
-    <div class="info-bar">
-      <span>Tamaño de la porción: <b>1 tajada (23 g)</b></span>
-      <span>Porciones por envase: <b>20</b></span>
+    <div class="tabla-nutricional-wrap">
+      <table class="tabla-nutricional">
+        <caption class="tn-caption">
+          <h2>Información Nutricional</h2>
+          <p>Tamaño de la porción: <strong>1 tajada (23 g)</strong></p>
+          <p>Porciones por envase: <strong>20</strong></p>
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Cantidad por</th>
+            <th scope="col">100 g</th>
+            <th scope="col">Porción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="destacado"><td>Calorías (kcal)</td><td>296</td><td>68</td></tr>
+          <tr><td>Grasa Total</td><td>20 g</td><td>4,6 g</td></tr>
+          <tr><td>Grasa Poliinsaturada</td><td>0,7 g</td><td>0,2 g</td></tr>
+          <tr class="destacado"><td>Grasa Saturada</td><td>13 g</td><td>3,0 g</td></tr>
+          <tr class="destacado"><td>Grasas Trans</td><td>310 mg</td><td>71 mg</td></tr>
+          <tr><td>Carbohidratos Totales</td><td>3,1 g</td><td>0,7 g</td></tr>
+          <tr><td>Fibra Dietaria</td><td>0 g</td><td>0 g</td></tr>
+          <tr><td>Azúcares Totales</td><td>1,9 g</td><td>0,4 g</td></tr>
+          <tr class="destacado"><td>Azúcares Añadidos</td><td>0 g</td><td>0 g</td></tr>
+          <tr><td>Proteína</td><td>23 g</td><td>5,3 g</td></tr>
+          <tr class="destacado"><td>Sodio</td><td>373 mg</td><td>86 mg</td></tr>
+        </tbody>
+        <tfoot class="vitaminas-minerales">
+          <tr><td>Vitamina A</td><td>241 µg ER</td><td>55 µg ER</td></tr>
+          <tr><td>Vitamina D</td><td>0,4 µg</td><td>0,09 µg</td></tr>
+          <tr><td>Calcio</td><td>517 mg</td><td>119 mg</td></tr>
+          <tr><td>Hierro</td><td>0,2 mg</td><td>0 mg</td></tr>
+          <tr><td>Zinc</td><td>2,9 mg</td><td>0,67 mg</td></tr>
+        </tfoot>
+      </table>
+      <p class="nota-vrn">
+        <small>* Valores de Referencia de Nutrientes (VRN) para adultos: Vitamina A 900 µg ER · Vitamina D 15 µg · Calcio 1000 mg · Hierro 8 mg · Zinc 11 mg.</small>
+      </p>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th class="lbl">Cantidad por</th>
-          <th>100 g</th>
-          <th>Porción</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="kcal">
-          <td class="lbl">Calorías (kcal)</td>
-          <td>296</td>
-          <td>68</td>
-        </tr>
-        <tr><td class="lbl">Grasa Total</td><td>20 g</td><td>4,6 g</td></tr>
-        <tr class="i1"><td class="lbl">Grasa Poliinsaturada</td><td>0,7 g</td><td>0,2 g</td></tr>
-        <tr class="i1"><td class="lbl">Grasa Saturada</td><td>13 g</td><td>3,0 g</td></tr>
-        <tr class="i1"><td class="lbl">Grasas Trans</td><td>310 mg</td><td>71 mg</td></tr>
-        <tr><td class="lbl">Carbohidratos Totales</td><td>3,1 g</td><td>0,7 g</td></tr>
-        <tr class="i1"><td class="lbl">Fibra Dietaria</td><td>0 g</td><td>0 g</td></tr>
-        <tr class="i1"><td class="lbl">Azúcares Totales</td><td>1,9 g</td><td>0,4 g</td></tr>
-        <tr class="i2"><td class="lbl">Azúcares Añadidos</td><td>0 g</td><td>0 g</td></tr>
-        <tr><td class="lbl">Proteína</td><td>23 g</td><td>5,3 g</td></tr>
-        <tr><td class="lbl">Sodio</td><td>373 mg</td><td>86 mg</td></tr>
-        <tr class="sep"><td colspan="3"></td></tr>
-        <tr class="micro"><td class="lbl">Vitamina A</td><td>241 µg ER</td><td>55 µg ER</td></tr>
-        <tr class="micro"><td class="lbl">Vitamina D</td><td>0,4 µg</td><td>0,09 µg</td></tr>
-        <tr class="micro"><td class="lbl">Calcio</td><td>517 mg</td><td>119 mg</td></tr>
-        <tr class="micro"><td class="lbl">Hierro</td><td>0,2 mg</td><td>0 mg</td></tr>
-        <tr class="micro"><td class="lbl">Zinc</td><td>2,9 mg</td><td>0,67 mg</td></tr>
-      </tbody>
-    </table>
-    <p class="footnote">* Valores de Referencia de Nutrientes (VRN) para adultos: Vitamina A 900 µg ER · Vitamina D 15 µg · Calcio 1000 mg · Hierro 8 mg · Zinc 11 mg.</p>
     <a class="back" href="../index.html">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Ver todos los productos Power Milk

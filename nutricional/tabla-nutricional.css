@@ -1,0 +1,129 @@
+/* ====================================================
+   Tabla nutricional · Power Milk
+   Cumple Resolución 810 de 2021 (MinSalud Colombia)
+   ==================================================== */
+
+.tabla-nutricional-wrap {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 0 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabla-nutricional {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;          /* base ≈ 10.5pt, sobre el mínimo legal de 10pt */
+  line-height: 1.4;
+}
+
+/* Caption: encabezado con título y porciones */
+.tabla-nutricional .tn-caption {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 3px solid #000;
+  caption-side: top;
+}
+
+.tabla-nutricional .tn-caption h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #000;
+  letter-spacing: -0.01em;
+}
+
+.tabla-nutricional .tn-caption p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #000;
+}
+
+/* Encabezado de columnas */
+.tabla-nutricional thead th {
+  text-align: right;
+  padding: 8px 12px;
+  border-bottom: 2px solid #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  background: #f2f2f2;
+}
+
+.tabla-nutricional thead th:first-child {
+  text-align: left;
+}
+
+/* Celdas generales (body y foot) */
+.tabla-nutricional tbody td,
+.tabla-nutricional tfoot td {
+  padding: 6px 12px;
+  border-top: 1px solid #000;
+  text-align: right;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabla-nutricional tbody td:first-child,
+.tabla-nutricional tfoot td:first-child {
+  text-align: left;
+}
+
+/* Nutrientes destacados: Calorías, Grasa Saturada, Grasas Trans,
+   Azúcares Añadidos, Sodio → 1.3× más grandes y en negrilla */
+.tabla-nutricional tr.destacado td {
+  font-size: 18.2px;        /* 14 × 1.3 */
+  font-weight: bold;
+}
+
+/* Separación marcada antes de vitaminas y minerales */
+.tabla-nutricional tfoot tr:first-child td {
+  border-top: 4px solid #000;
+}
+
+/* Vitaminas y minerales en tamaño base */
+.tabla-nutricional tfoot td {
+  font-size: 13px;
+}
+
+/* Nota VRN al pie */
+.nota-vrn {
+  max-width: 640px;
+  margin: 10px auto 0;
+  padding: 0 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* ====================================================
+   Responsivo: mantener mínimo legal sin escalar
+   ==================================================== */
+@media (max-width: 480px) {
+  .tabla-nutricional {
+    font-size: 13px;        /* ≈ 10pt, mínimo legal */
+  }
+  .tabla-nutricional tr.destacado td {
+    font-size: 16.9px;      /* 13 × 1.3 */
+  }
+  .tabla-nutricional .tn-caption h2 {
+    font-size: 20px;
+  }
+  .tabla-nutricional tfoot td {
+    font-size: 12px;
+  }
+  .tabla-nutricional tbody td,
+  .tabla-nutricional tfoot td,
+  .tabla-nutricional thead th {
+    padding: 6px 8px;
+  }
+}
