@@ -1862,21 +1862,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .nutri-modal {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   background: rgba(15, 40, 55, 0.72);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
 }
 .nutri-modal.open {
+  display: flex;
   opacity: 1;
   pointer-events: all;
 }
